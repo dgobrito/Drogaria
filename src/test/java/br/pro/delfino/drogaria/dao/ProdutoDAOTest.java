@@ -10,7 +10,6 @@ import br.pro.delfino.drogaria.domain.Fabricante;
 import br.pro.delfino.drogaria.domain.Produto;
 
 public class ProdutoDAOTest {
-
 	@Test
 	@Ignore
 	public void salvar() {
