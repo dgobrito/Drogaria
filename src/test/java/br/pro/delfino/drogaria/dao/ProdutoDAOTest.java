@@ -14,6 +14,10 @@ public class ProdutoDAOTest {
 	@Test
 	@Ignore
 	public void salvar() {
+		
+		/*
+		 * Comentário para teste do Git
+		 */
 
 		Long codigoFabricante = 1L;
 		FabricanteDAO fabricanteDAO = new FabricanteDAO();
