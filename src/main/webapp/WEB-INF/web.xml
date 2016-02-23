@@ -6,4 +6,26 @@
 
 	<!-- Nome da Aplicação -->
 	<display-name>Drogaria</display-name>
+	
+	<!-- Estágio do Projeto, sendo eles:
+	     Desenvolvimento: Ajuda rastrear erros
+	     Produção: Oculta erros  -->
+	<context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    
+    <!-- Configuração do JSF -->
+	<!-- Criando Servlet -->
+	<servlet>
+        <servlet-name>Faces Servlet</servlet-name> <!-- Nome do Servlet -->
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class> <!-- Classe carregada -->
+        <load-on-startup>1</load-on-startup> <!-- Ativar o servlet -->
+    </servlet>    
+    <!-- Mapeia o servlet para dizer em qual momento será usado o JSF -->
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name> <!-- Linkando com o nome do Servlet -->
+        <url-pattern>*.xhtml</url-pattern> <!-- Define o tipo de arquivo que o JSF deve gerenciar -->
+    </servlet-mapping>    
+    
 </web-app>
