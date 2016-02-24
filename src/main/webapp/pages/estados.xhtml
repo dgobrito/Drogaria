@@ -9,22 +9,59 @@
 	<title>Estados</title>
 </h:head>
 <h:body>
-	<p:panel header="Estados - Listagem">
-		<p:dataTable emptyMessage="Nenhum registro encontrado."
-			paginator="true">
-			<f:facet name="header"> <!-- Pode usar footer para colocar abaixo -->
-				<p:commandButton value="Novo" />
-			</f:facet>
-			
-			<p:column headerText="Nome">
-			</p:column>
+	<h:form>
+		<p:panel header="Estados - Listagem">
+			<p:dataTable emptyMessage="Nenhum registro encontrado."
+				paginator="true">
+				<f:facet name="header">
+					<!-- Pode usar footer para colocar abaixo -->
+					<!--
+					oncomplete: evento de quando acabar, quando concluir o click.
+					PF (PrimeFaces)
+					 -->
+					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();" />
+				</f:facet>
 
-			<p:column headerText="Sigla">
-			</p:column>
+				<p:column headerText="Nome">
+				</p:column>
 
-			<p:column headerText="Opções">
-			</p:column>
-		</p:dataTable>
-	</p:panel>
+				<p:column headerText="Sigla">
+				</p:column>
+
+				<p:column headerText="Opções">
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+
+	<!--
+	Janela flutuante
+	Dialogo só aparece por invocação, por padrão é invisivel
+	header: Cabeçalho
+	widgetVar: identificador do componente (nome)
+	draggable: Poder arrastar, por padrão é true
+	resizable: Redimensionar, por padrão é true
+	modal: Para impedir o usuário interagir com o que está atrás
+	closeable: Permitir fechar ou não
+	 -->
+	<p:dialog header="Estados - Cadastros" widgetVar="dialogo"
+		draggable="false" resizable="false" modal="true" closable="false">
+		<h:form>
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Nome:" />
+				<!-- maxlength: Máximo de caracteres
+			     size: Tamanho do componente -->
+				<p:inputText maxlength="50" size="30" />
+
+				<p:outputLabel value="Sigla:" />
+				<p:inputText maxlength="2" size="10" />
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<p:commandButton value="Salvar" />
+				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
+			</h:panelGrid>
+		</h:form>
+
+	</p:dialog>
 </h:body>
 </html>
