@@ -131,5 +131,33 @@ public class GenericDAO<Entidade> {
 		} finally {
 			sessao.close();
 		}
+	}
+	
+	public void merge(Entidade entidade) {
+		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
+		Transaction transacao = null;
+
+		try {
+			transacao = sessao.beginTransaction();
+			sessao.merge(entidade);
+			transacao.commit();
+		} catch (RuntimeException erro) {
+			/*
+			 * Se a transação foi aberta, ou seja, diferente de null e durante o
+			 * try da algum erro, verifica se realmente foi aberta (<> null) e
+			 * executa o rollback.
+			 */
+			if (transacao != null) {
+				transacao.rollback();
+			}
+
+			throw erro;
+		} finally {
+			sessao.close();
+		}
 	}	
+	
+	
+	
+	
 }
