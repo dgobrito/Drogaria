@@ -39,7 +39,7 @@
 		     create: apaga tudo (tabela e dados) e recria
 		     update: tenta manter os dados e atualiza a tabela
 		     validate: Verifica se o que esta no Java é igual ao banco -->
-		<property name="hbm2ddl.auto">validade</property>
+		<property name="hbm2ddl.auto">update</property>
 
 		<!-- Mapeamento das entidades -->
 		<mapping class="br.pro.delfino.drogaria.domain.Cidade" />
