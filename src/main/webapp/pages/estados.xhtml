@@ -53,10 +53,10 @@
 				<p:outputLabel value="Nome:" />
 				<!-- maxlength: Máximo de caracteres
 			     size: Tamanho do componente -->
-				<p:inputText maxlength="50" size="30" />
+				<p:inputText maxlength="50" size="30" value="#{estadoBean.estado.nome}" />
 
 				<p:outputLabel value="Sigla:" />
-				<p:inputText maxlength="2" size="10" />
+				<p:inputText maxlength="2" size="10" value="#{estadoBean.estado.sigla}" />
 			</h:panelGrid>
 			<h:panelGrid columns="2">
 				<!-- actionListener linguar EL para ligar visão e controle -->
