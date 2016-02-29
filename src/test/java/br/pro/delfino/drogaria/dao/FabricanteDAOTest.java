@@ -63,6 +63,7 @@ public class FabricanteDAOTest {
 	}
 	
 	@Test
+	@Ignore
 	public void editar() {
 		Long codigo = 3L;
 		FabricanteDAO fabricanteDAO = new FabricanteDAO();
@@ -80,5 +81,24 @@ public class FabricanteDAOTest {
 			System.out.println("Registro editado - Depois:");
 			System.out.println(fabricante.getCodigo() + " - " + fabricante.getDescricao());
 		}		
+	}
+	
+	@Test
+	public void merge() {
+		/*
+		Fabricante fabricante = new Fabricante();
+		fabricante.setDescricao("Aché");
+		FabricanteDAO fabricanteDAO = new FabricanteDAO();
+		fabricanteDAO.merge(fabricante);
+		*/
+		
+		/*
+		 * Se a chave primária estiver vazia inclui, senão busca no banco e edita
+		 */
+		
+		FabricanteDAO fabricanteDAO = new FabricanteDAO();
+		Fabricante fabricante = fabricanteDAO.buscar(3L);
+		fabricante.setDescricao("Fabricante C");
+		fabricanteDAO.merge(fabricante);
 	}
 }
