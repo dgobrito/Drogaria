@@ -4,6 +4,8 @@ import javax.faces.bean.ManagedBean;
 
 import org.omnifaces.util.Messages;
 
+import br.pro.delfino.drogaria.domain.Estado;
+
 /*
  * Bean é o controle e modelo
  * Existe 2 tipos para fazer o Bean (Se está usando container (Tomcat) ou
@@ -15,6 +17,16 @@ import org.omnifaces.util.Messages;
 
 @ManagedBean
 public class EstadoBean {
+	
+	private Estado estado;
+	
+	public Estado getEstado() {
+		return estado;
+	}
+	
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
 
 	public void salvar() {
 
