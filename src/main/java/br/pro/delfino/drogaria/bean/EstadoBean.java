@@ -1,6 +1,9 @@
 package br.pro.delfino.drogaria.bean;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import org.omnifaces.util.Messages;
 
@@ -15,8 +18,17 @@ import br.pro.delfino.drogaria.domain.Estado;
  * Controle não manipula visão
  */
 
+/*
+ * Tempos de vida dos objetos:
+ * Request: Vive por apenas um click
+ * View: Existe enquanto está na tela
+ * Session: Objetos vivos durante todo o tempo de sessão da aplicação (Não recomendado)
+ */
+
+@SuppressWarnings("serial")
 @ManagedBean
-public class EstadoBean {
+@ViewScoped
+public class EstadoBean implements Serializable {
 	
 	private Estado estado;
 	
@@ -26,6 +38,10 @@ public class EstadoBean {
 	
 	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+	
+	public void novo() {
+		estado = new Estado();
 	}
 
 	public void salvar() {
@@ -42,7 +58,6 @@ public class EstadoBean {
 		 * o contexto contexto.addMessage(null, mensagem);
 		 */
 
-		Messages.addGlobalInfo("Programação Web com Java");
-		//Messages.addGlobalError("Programação Web com Java");
+		Messages.addGlobalInfo("Nome: " + estado.getNome() + " Sigla: " + estado.getSigla());
 	}
 }
