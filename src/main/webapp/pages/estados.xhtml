@@ -64,7 +64,7 @@
 				<!-- actionListener linguagem EL para ligar visão e controle -->
 				<!-- update componente que eu quero atualizar depois de executar -->
 				<p:commandButton value="Salvar" actionListener="#{estadoBean.salvar}" 
-					update=":mensagem" />
+					update=":mensagem :formCadastro:painel" />
 				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
 			</h:panelGrid>
 		</h:form>
