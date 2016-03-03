@@ -7,6 +7,7 @@ import javax.faces.bean.ViewScoped;
 
 import org.omnifaces.util.Messages;
 
+import br.pro.delfino.drogaria.dao.EstadoDAO;
 import br.pro.delfino.drogaria.domain.Estado;
 
 /*
@@ -58,6 +59,19 @@ public class EstadoBean implements Serializable {
 		 * o contexto contexto.addMessage(null, mensagem);
 		 */
 
-		Messages.addGlobalInfo("Nome: " + estado.getNome() + " Sigla: " + estado.getSigla());
+		//Messages.addGlobalInfo("Nome: " + estado.getNome() + " Sigla: " + estado.getSigla());
+		
+		try {
+			EstadoDAO estadoDAO = new EstadoDAO();
+			estadoDAO.salvar(estado);
+			
+			novo();
+			
+			Messages.addGlobalInfo("Estado salvo com sucesso");
+		//} catch (RuntimeException | ExceptionInInitializerError e) {
+		} catch (RuntimeException e) {
+			Messages.addGlobalError("Ocorreu um erro ao tentar salvar o estado");
+			e.printStackTrace();
+		}		
 	}
 }
