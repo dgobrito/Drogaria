@@ -21,7 +21,9 @@
 					oncomplete: evento de quando acabar, quando concluir o click.
 					PF (PrimeFaces)
 					 -->
-					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();" />
+					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();"
+						actionListener="#{estadoBean.novo}"
+						update=":formCadastro:painel"/>
 				</f:facet>
 
 				<p:column headerText="Nome">
@@ -48,8 +50,8 @@
 	 -->
 	<p:dialog header="Estados - Cadastro" widgetVar="dialogo"
 		draggable="false" resizable="false" modal="true" closable="false">
-		<h:form>
-			<h:panelGrid columns="2">
+		<h:form id="formCadastro">
+			<h:panelGrid id="painel" columns="2">
 				<p:outputLabel value="Nome:" />
 				<!-- maxlength: Máximo de caracteres
 			     size: Tamanho do componente -->
@@ -59,7 +61,7 @@
 				<p:inputText maxlength="2" size="10" value="#{estadoBean.estado.sigla}" />
 			</h:panelGrid>
 			<h:panelGrid columns="2">
-				<!-- actionListener linguar EL para ligar visão e controle -->
+				<!-- actionListener linguagem EL para ligar visão e controle -->
 				<!-- update componente que eu quero atualizar depois de executar -->
 				<p:commandButton value="Salvar" actionListener="#{estadoBean.salvar}" 
 					update=":mensagem" />
