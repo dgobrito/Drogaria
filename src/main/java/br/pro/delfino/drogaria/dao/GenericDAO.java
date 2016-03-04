@@ -28,7 +28,7 @@ public class GenericDAO<Entidade> {
 
 		try {
 			transacao = sessao.beginTransaction();
-			sessao.save(entidade);
+			sessao.merge(entidade);
 			transacao.commit();
 		} catch (RuntimeException erro) {
 			/*
