@@ -101,8 +101,18 @@ public class EstadoBean implements Serializable {
 	}
 	
 	public void excluir(ActionEvent evento) {
-		estado = (Estado) evento.getComponent().getAttributes().get("estadoSelecionado");
-		
-		Messages.addGlobalInfo("Codigo: " + estado.getCodigo() + " Nome: " + estado.getNome() + " Sigla: " + estado.getSigla());
+		try {
+			estado = (Estado) evento.getComponent().getAttributes().get("estadoSelecionado");
+			
+			EstadoDAO estadoDAO = new EstadoDAO();
+			estadoDAO.excluir(estado);
+			
+			estados = estadoDAO.listar();
+			
+			Messages.addGlobalInfo("Estado removido com sucesso");			
+		} catch (RuntimeException e) {
+			Messages.addGlobalError("Ocorreu um erro ao tentar remover o estado");
+			e.printStackTrace();
+		}
 	}
 }
