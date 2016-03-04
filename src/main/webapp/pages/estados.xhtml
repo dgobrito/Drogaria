@@ -13,8 +13,12 @@
 
 	<h:form>
 		<p:panel header="Estados - Listagem">
+			<!-- value: Popula Datatable com a lista, ligando a visão ao modelo
+				 var: Variavel para criação do cursor, deve ser do mesmo tipo que está listando -->					
 			<p:dataTable emptyMessage="Nenhum registro encontrado."
-				paginator="true">
+				paginator="true"
+				value="#{estadoBean.estados}"
+				var="estado">
 				<f:facet name="header">
 					<!-- Pode usar footer para colocar abaixo -->
 					<!--
@@ -27,9 +31,11 @@
 				</f:facet>
 
 				<p:column headerText="Nome">
+					<h:outputText value="#{estado.nome}" />
 				</p:column>
 
 				<p:column headerText="Sigla">
+					<h:outputText value="#{estado.sigla}" />
 				</p:column>
 
 				<p:column headerText="Opções">
