@@ -11,12 +11,12 @@
 <h:body>
 	<p:growl id="mensagem" />
 
-	<h:form>
+	<h:form id="formListagem">
 		<p:panel header="Estados - Listagem">
 			<!-- value: Popula Datatable com a lista, ligando a visão ao modelo -->
 			<!-- var: Variavel para criação do cursor, deve ser do mesmo tipo que está listando -->
 			<!-- rows: quantidade de linhas para paginação -->					
-			<p:dataTable emptyMessage="Nenhum registro encontrado."
+			<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado."
 				paginator="true"
 				value="#{estadoBean.estados}"
 				var="estado"
@@ -92,7 +92,7 @@
 				<!-- actionListener linguagem EL para ligar visão e controle -->
 				<!-- update componente que eu quero atualizar depois de executar -->
 				<p:commandButton value="Salvar" actionListener="#{estadoBean.salvar}" 
-					update=":mensagem :formCadastro:painel" />
+					update=":mensagem :formCadastro:painel :formListagem:tabela" />
 				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
 			</h:panelGrid>
 		</h:form>
