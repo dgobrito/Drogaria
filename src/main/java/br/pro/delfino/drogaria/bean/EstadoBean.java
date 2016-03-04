@@ -1,7 +1,9 @@
 package br.pro.delfino.drogaria.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -32,6 +34,7 @@ import br.pro.delfino.drogaria.domain.Estado;
 public class EstadoBean implements Serializable {
 	
 	private Estado estado;
+	private List<Estado> estados;
 	
 	public Estado getEstado() {
 		return estado;
@@ -39,6 +42,25 @@ public class EstadoBean implements Serializable {
 	
 	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+	
+	public List<Estado> getEstados() {
+		return estados;
+	}
+	
+	public void setEstados(List<Estado> estados) {
+		this.estados = estados;
+	}
+	
+	@PostConstruct //Chamado logo após o construtor da classe
+	public void listar() {
+		try {
+			EstadoDAO estadoDAO = new EstadoDAO();
+			estados = estadoDAO.listar();
+		} catch (RuntimeException e) {
+			Messages.addGlobalError("Ocorreu um erro ao tentar listar os estados");
+			e.printStackTrace();			
+		}
 	}
 	
 	public void novo() {
