@@ -43,8 +43,23 @@
 				</p:column>
 
 				<p:column headerText="Opções">
+					<p:commandButton icon="ui-icon-trash">
+						<p:confirm header="Confirmação" message="Deseja excluir o estado?" 
+							icon="ui-icon-alert"/>
+					</p:commandButton>
 				</p:column>
 			</p:dataTable>
+			
+			<!-- global: true serve para dizer que qualquer ação de confirmação, a janela com true será chamada
+			usar a mesma janela para confirmar que sim ou não -->
+			<!-- typebutton: serve para não submeter (submmit) das informações -->
+			<p:confirmDialog global="true">
+				<p:commandButton value="Sim" type="button" 
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button" 
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+			
 		</p:panel>
 	</h:form>
 
