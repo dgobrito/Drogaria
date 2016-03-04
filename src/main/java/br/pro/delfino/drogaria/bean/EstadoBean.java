@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.event.ActionEvent;
 
 import org.omnifaces.util.Messages;
 
@@ -95,5 +96,11 @@ public class EstadoBean implements Serializable {
 			Messages.addGlobalError("Ocorreu um erro ao tentar salvar o estado");
 			e.printStackTrace();
 		}		
+	}
+	
+	public void excluir(ActionEvent evento) {
+		estado = (Estado) evento.getComponent().getAttributes().get("estadoSelecionado");
+		
+		Messages.addGlobalInfo("Codigo: " + estado.getCodigo() + " Nome: " + estado.getNome() + " Sigla: " + estado.getSigla());
 	}
 }
